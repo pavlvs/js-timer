@@ -8,6 +8,8 @@
 // cs⇥ class (ES6)
 // csx⇥ extend a class (ES6)
 // m⇥ method (ES6 syntax)
+// get⇥ getter (ES6 syntax)
+// set⇥ setter (ES6 syntax)
 
 // fan⇥ anonymous function
 // fn⇥ named function
@@ -40,7 +42,19 @@ class Timer {
     }
 
     tick = () => {
-        console.log('tick')
+        if (this.timeRemaining <= 0) {
+            this.pause()
+        } else {
+            this.timeRemaining = this.timeRemaining - 1
+        }
+    }
+
+    get timeRemaining() {
+        return parseFloat(this.durationInput.value)
+    }
+
+    set timeRemaining(time) {
+        this.durationInput.value = time
     }
 }
 
